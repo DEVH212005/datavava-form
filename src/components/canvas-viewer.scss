@@ -1,0 +1,31 @@
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .canvas-element {
+    touch-action: none;
+    display: block;
+    cursor: grab;
+
+    &.dragging {
+      cursor: grabbing;
+    }
+  }
+
+  .canvas-controls {
+    position: absolute;
+    right: 0.5rem; // same as right-2
+    top: 0.5rem; // same as top-2
+    display: flex;
+    gap: 0.5rem; // same as gap-2
+    background-color: rgba(255, 255, 255, 0.6); // bg-white/60
+    backdrop-filter: blur(4px); // backdrop-blur-sm
+    padding: 0.25rem; // p-1
+    border-radius: 0.375rem; // rounded-md
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); // shadow
+  }
+}

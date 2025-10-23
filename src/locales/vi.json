@@ -1,0 +1,97 @@
+{
+  "title": {
+    "faxForm": "Biểu Mẫu Fax",
+    "result": "Kết Quả",
+    "notification": "Thông Báo",
+    "other": "Khác"
+  },
+  "label": {
+    "patientName": "Tên Bệnh Nhân",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "faxNumber": "Số Fax",
+    "dateOfBirth": "Ngày Sinh",
+    "medication": "Thuốc",
+    "location": "Địa Điểm",
+    "status": "Trạng Thái",
+    "confirmationNumber": "Số Xác Nhận",
+    "startDate": "Ngày Bắt Đầu",
+    "endDate": "Ngày Kết Thúc",
+    "spName": "Tên SP",
+    "doNotBill": "Không Thanh Toán",
+    "note": "Ghi Chú",
+    "reason": "Lý Do",
+    "doseFrequency": "Tần Suất Liều Dùng"
+  },
+  "placeholder": {
+    "patientName": "Nhập Tên Bệnh Nhân",
+    "firstName": "Nhập Tên",
+    "lastName": "Nhập Họ",
+    "faxNumber": "Nhập Số Fax",
+    "dateOfBirth": "Chọn Ngày Sinh",
+    "medication": "Chọn Thuốc",
+    "location": "Chọn Địa Điểm",
+    "status": "Chọn Trạng Thái",
+    "confirmationNumber": "Nhập Số Xác Nhận",
+    "startDate": "Chọn Ngày Bắt Đầu",
+    "endDate": "Chọn Ngày Kết Thúc",
+    "spName": "Nhập Tên SP",
+    "note": "Nhập Ghi Chú",
+    "reason": "Nhập Lý Do",
+    "doseFrequency": "Nhập Tần Suất Liều Dùng"
+  },
+  "error": {
+    "confirmationNumber": {
+      "required": "Số Xác Nhận là bắt buộc"
+    },
+    "dateOfBirth": {
+      "required": "Ngày Sinh là bắt buộc"
+    },
+    "startDate": {
+      "required": "Ngày Bắt Đầu là bắt buộc"
+    },
+    "endDate": {
+      "required": "Ngày Kết Thúc là bắt buộc",
+      "beforeStartDate": "Ngày Kết Thúc không thể trước Ngày Bắt Đầu"
+    },
+    "faxNumber": {
+      "required": "Số Fax là bắt buộc"
+    },
+    "location": {
+      "required": "Địa Điểm là bắt buộc"
+    },
+    "medication": {
+      "required": "Thuốc là bắt buộc"
+    },
+    "patientName": {
+      "required": "Tên Bệnh Nhân là bắt buộc"
+    },
+    "reason": {
+      "required": "Lý Do là bắt buộc"
+    },
+    "note": {
+      "required": "Ghi Chú là bắt buộc"
+    },
+    "firstName": {
+      "required": "Tên là bắt buộc"
+    },
+    "lastName": {
+      "required": "Họ là bắt buộc"
+    },
+    "doseFrequency": {
+      "required": "Tần Suất Liều Dùng là bắt buộc"
+    }
+  },
+  "description": {
+    "noPdfForPreview": "Không có PDF để xem trước"
+  },
+  "action": {
+    "completeTask": "Hoàn Thành Nhiệm Vụ",
+    "downloadPdf": "Tải PDF"
+  },
+  "statuses": {
+    "approved": "Đã Duyệt",
+    "denied": "Đã Từ Chối",
+    "cancelled": "Đã Hủy"
+  }
+}

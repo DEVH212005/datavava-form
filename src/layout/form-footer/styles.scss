@@ -1,0 +1,14 @@
+.form-footer {
+  padding: 0;
+  flex-shrink: 1;
+  flex-grow: 0;
+  .form-row {
+    padding: 12px 24px;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .pagination {
+    margin-right: 16px;
+  }
+}

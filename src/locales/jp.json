@@ -1,0 +1,97 @@
+{
+  "title": {
+    "faxForm": "ファックスフォーム",
+    "result": "結果",
+    "notification": "通知",
+    "other": "その他"
+  },
+  "label": {
+    "patientName": "患者の名前",
+    "firstName": "名",
+    "lastName": "姓",
+    "faxNumber": "ファックス番号",
+    "dateOfBirth": "生年月日",
+    "medication": "薬剤",
+    "location": "場所",
+    "status": "ステータス",
+    "confirmationNumber": "確認番号",
+    "startDate": "開始日",
+    "endDate": "終了日",
+    "spName": "SPの名前",
+    "doNotBill": "請求しない",
+    "note": "メモ",
+    "reason": "理由",
+    "doseFrequency": "投与頻度"
+  },
+  "placeholder": {
+    "patientName": "患者の名前を入力",
+    "firstName": "名を入力",
+    "lastName": "姓を入力",
+    "faxNumber": "ファックス番号を入力",
+    "dateOfBirth": "生年月日を選択",
+    "medication": "薬剤を選択",
+    "location": "場所を選択",
+    "status": "ステータスを選択",
+    "confirmationNumber": "確認番号を入力",
+    "startDate": "開始日を選択",
+    "endDate": "終了日を選択",
+    "spName": "SPの名前を入力",
+    "note": "メモを入力",
+    "reason": "理由を入力",
+    "doseFrequency": "投与頻度を入力"
+  },
+  "error": {
+    "confirmationNumber": {
+      "required": "確認番号が必要です"
+    },
+    "dateOfBirth": {
+      "required": "生年月日が必要です"
+    },
+    "startDate": {
+      "required": "開始日が必要です"
+    },
+    "endDate": {
+      "required": "終了日が必要です",
+      "beforeStartDate": "終了日は開始日より前に設定できません"
+    },
+    "faxNumber": {
+      "required": "ファックス番号が必要です"
+    },
+    "location": {
+      "required": "場所が必要です"
+    },
+    "medication": {
+      "required": "薬剤が必要です"
+    },
+    "patientName": {
+      "required": "患者の名前が必要です"
+    },
+    "reason": {
+      "required": "理由が必要です"
+    },
+    "note": {
+      "required": "メモが必要です"
+    },
+    "firstName": {
+      "required": "名が必要です"
+    },
+    "lastName": {
+      "required": "姓が必要です"
+    },
+    "doseFrequency": {
+      "required": "投与頻度が必要です"
+    }
+  },
+  "description": {
+    "noPdfForPreview": "プレビュー用のPDFがありません"
+  },
+  "action": {
+    "completeTask": "タスクを完了",
+    "downloadPdf": "PDFをダウンロード"
+  },
+  "statuses": {
+    "approved": "承認済み",
+    "denied": "拒否済み",
+    "cancelled": "キャンセル済み"
+  }
+}

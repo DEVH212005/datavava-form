@@ -1,0 +1,97 @@
+{
+  "title": {
+    "faxForm": "Fax Form",
+    "result": "Result",
+    "notification": "Notification",
+    "other": "Other"
+  },
+  "label": {
+    "patientName": "Patient's Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "faxNumber": "Fax Number",
+    "dateOfBirth": "Date of Birth",
+    "medication": "Medication",
+    "location": "Location",
+    "status": "Status",
+    "confirmationNumber": "Confirmation Number",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "spName": "SP Name",
+    "doNotBill": "Do Not Bill",
+    "note": "Note",
+    "reason": "Reason",
+    "doseFrequency": "Dose Frequency"
+  },
+  "placeholder": {
+    "patientName": "Enter Patient's Name",
+    "firstName":"Enter First Name",
+    "lastName":"Enter Last Name",
+    "faxNumber": "Enter Fax Number",
+    "dateOfBirth": "Select Date of Birth",
+    "medication": "Select Medication",
+    "location": "Select Location",
+    "status": "Select Status",
+    "confirmationNumber": "Enter Confirmation Number",
+    "startDate": "Select Start Date",
+    "endDate": "Select End Date",
+    "spName": "Enter SP Name",
+    "note": "Enter Note",
+    "reason": "Enter Reason",
+    "doseFrequency": "Enter Dose Frequency"
+  },
+  "error": {
+    "confirmationNumber": {
+      "required": "Confirmation Number is required"
+    },
+    "dateOfBirth": {
+      "required": "Date of Birth is required"
+    },
+    "startDate": {
+      "required": "Start Date is required"
+    },
+    "endDate": {
+      "required": "End Date is required",
+      "beforeStartDate": "End Date cannot be earlier than Start Date"
+    },
+    "faxNumber": {
+      "required": "Fax Number is required"
+    },
+    "location": {
+      "required": "Location is required"
+    },
+    "medication": {
+      "required": "Medication is required"
+    },
+    "patientName": {
+      "required": "Patient's Name is required"
+    },
+    "reason": {
+      "required": "Reason is required"
+    },
+    "note": {
+      "required": "Note is required"
+    },
+    "firstName": {
+      "required": "First Name is required"
+    },
+    "lastName": {
+      "required": "Last Name is required"
+    },
+    "doseFrequency": {
+      "required": "Dose Frequency is required"
+    }
+  },
+  "description": {
+    "noPdfForPreview": "No PDF for preview"
+  },
+  "action": {
+    "completeTask": "Complete Task",
+    "downloadPdf": "Download PDF"
+  },
+  "statuses": {
+    "approved": "Approved",
+    "denied": "Denied",
+    "cancelled": "Cancelled"
+  }
+}
