@@ -4,8 +4,8 @@ import "./styles.scss";
 import { Tabs } from "antd";
 import ClassificationScreen from "./classification-screen";
 import { CheckClassificationScreen } from "./check-classification-screen";
-import { EntryScreen } from "./entry-screen";
 import { CheckEntryScreen } from "./check-entry-screen";
+import EntryScreen from "./entry-screen";
 export default function App() {
   const tabItems = [
     {
@@ -21,12 +21,116 @@ export default function App() {
     {
       key: "entry",
       label: "Entry",
-      children: <EntryScreen />,
+      children: (
+        <EntryScreen
+          inputConfig={[
+            {
+              key: "col1",
+              title: "Cột 1",
+              rules: [{ required: true, message: "Cột 1 bắt buộc!" }],
+            },
+            {
+              key: "col5",
+              title: "Cột 5",
+              rules: [{ required: true, message: "Cột 5 bắt buộc!" }],
+            },
+            {
+              key: "col7",
+              title: "Cột 7",
+              rules: [{ required: true, message: "Cột 7 bắt buộc!" }],
+            },
+            {
+              key: "col9",
+              title: "Cột 9",
+              rules: [{ required: true, message: "Cột 9 bắt buộc!" }],
+            },
+            {
+              key: "col10",
+              title: "Cột 10",
+              rules: [{ required: true, message: "Cột 9 bắt buộc!" }],
+            },
+          ]}
+          tableConfig={[
+            {
+              key: "col2",
+              title: "Cột 2",
+              rules: [{ required: true, message: "Cột 2 bắt buộc!" }],
+            },
+            {
+              key: "col3",
+              title: "Cột 3",
+              rules: [{ required: true, message: "Cột 3 bắt buộc!" }],
+            },
+            {
+              key: "col4",
+              title: "Cột 4",
+              rules: [{ required: true, message: "Cột 4 bắt buộc!" }],
+            },
+            {
+              key: "col8",
+              title: "Cột 8",
+              rules: [{ required: true, message: "Cột 8 bắt buộc!" }],
+            },
+          ]}
+        />
+      ),
     },
     {
       key: "check-entry",
       label: "Check Entry",
-      children: <CheckEntryScreen />,
+      children: (
+        <CheckEntryScreen
+          inputConfig={[
+            {
+              key: "col1",
+              title: "Cột 1",
+              rules: [{ required: true, message: "Cột 1 bắt buộc!" }],
+            },
+            {
+              key: "col5",
+              title: "Cột 5",
+              rules: [{ required: true, message: "Cột 5 bắt buộc!" }],
+            },
+            {
+              key: "col7",
+              title: "Cột 7",
+              rules: [{ required: true, message: "Cột 7 bắt buộc!" }],
+            },
+            {
+              key: "col9",
+              title: "Cột 9",
+              rules: [{ required: true, message: "Cột 9 bắt buộc!" }],
+            },
+            {
+              key: "col10",
+              title: "Cột 10",
+              rules: [{ required: true, message: "Cột 9 bắt buộc!" }],
+            },
+          ]}
+          tableConfig={[
+            {
+              key: "col2",
+              title: "Cột 2",
+              rules: [{ required: true, message: "Cột 2 bắt buộc!" }],
+            },
+            {
+              key: "col3",
+              title: "Cột 3",
+              rules: [{ required: true, message: "Cột 3 bắt buộc!" }],
+            },
+            {
+              key: "col4",
+              title: "Cột 4",
+              rules: [{ required: true, message: "Cột 4 bắt buộc!" }],
+            },
+            {
+              key: "col8",
+              title: "Cột 8",
+              rules: [{ required: true, message: "Cột 8 bắt buộc!" }],
+            },
+          ]}
+        />
+      ),
     },
   ];
 

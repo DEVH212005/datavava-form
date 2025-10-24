@@ -4,17 +4,32 @@ import { useForm } from "../../hooks/useForm";
 import { FormContent, FormFooter } from "../../layout";
 import "./styles.scss";
 import Form from "../../components/FormTable";
+import { useFormStore } from "../../store/useFormStore";
 
 const { Content } = Layout;
 const { useToken } = theme;
 
 export function MainWrapper() {
-  const { onCompleteTask, dataTable, onChange, disabled } = useForm();
+  const { onFinish } = useForm();
+  const { getForm } = useFormStore();
+
   const { token } = useToken();
+
+  const handleSubmit = async () => {
+    const form = getForm();
+    if (!form) return console.warn("Form not ready yet");
+
+    try {
+      const values = await form.validateFields();
+      console.log("✅ Submitted:", values);
+    } catch (error) {
+      console.log("❌ Validation failed:", error);
+    }
+  };
 
   return (
     <Layout className="main-wrapper">
-      <Content >
+      <Content>
         <Layout style={{ height: "100%", background: `${token.colorBgBase}` }}>
           <FormContent>
             <Form />
@@ -22,7 +37,7 @@ export function MainWrapper() {
         </Layout>
       </Content>
 
-      <FormFooter onComplete={onCompleteTask} />
+      <FormFooter onComplete={handleSubmit} />
     </Layout>
   );
 }

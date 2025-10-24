@@ -1,75 +1,83 @@
-import React from "react";
-
-import { Input, Table } from "antd";
+import React, { useEffect, useState } from "react";
+import { Input, Table, Card, Form, Button, Flex } from "antd";
 import Media from "./CanvasViewer";
+import { useFormStore } from "../store/useFormStore";
+import { TeamOutlined, UserOutlined } from "@ant-design/icons";
 
-const mockTableData = [
-  { id: 1, col2: "", col3: "", col4: "", col8: "" },
-  { id: 2, col2: "", col3: "", col4: "", col8: "" },
-  { id: 3, col2: "", col3: "", col4: "", col8: "" },
-  { id: 4, col2: "", col3: "", col4: "", col8: "" },
-  { id: 5, col2: "", col3: "", col4: "", col8: "" },
-];
+interface ColumnConfig {
+  key: string;
+  title: string;
+  rules?: any[]; // antd-style validation rules
+}
 
-export function EntryScreen() {
-  const columns = [
-    {
-      title: "Cột 2",
-      dataIndex: "col2",
-      key: "col2",
-      render: (value: string, record: any) => (
-        <Input
-          placeholder="Nhập dữ liệu..."
-          defaultValue={value}
-          size="small"
-          style={{ minWidth: "100px" }}
-        />
-      ),
+interface CheckEntryScreenProps {
+  inputConfig: ColumnConfig[]; // 1,5,6,7,9,10
+  tableConfig: ColumnConfig[]; // 2,3,4,8
+}
+
+export default function EntryScreen({
+  inputConfig,
+  tableConfig,
+}: CheckEntryScreenProps) {
+  const [form] = Form.useForm();
+  const [tableData, setTableData] = useState([{ id: 1 }]);
+
+  const { setForm } = useFormStore();
+
+  useEffect(() => {
+    setForm(form);
+    return () => setForm(null); // cleanup on unmount
+  }, [form, setForm]);
+
+  const handleAddRow = () => {
+    setTableData((prev) => [...prev, { id: prev.length + 1 }]);
+  };
+
+  // --- Dynamic table columns ---
+  const columns = tableConfig.map((col, colIndex) => ({
+    title: col.title,
+    dataIndex: col.key,
+    key: col.key,
+    render: (_: any, record: any, rowIndex: number) => {
+      const isLastRow = rowIndex === tableData.length - 1;
+      const isLastColumn = colIndex === tableConfig.length - 1;
+
+      return (
+        <Form.Item
+          name={["table", rowIndex, col.key]}
+          rules={col.rules}
+          style={{ margin: 0 }}
+        >
+          <Input
+            size="middle"
+            placeholder={`Nhập ${col.title}`}
+            style={{ minWidth: 100 }}
+            onKeyDown={(e) => {
+              if (
+                isLastRow &&
+                isLastColumn &&
+                (e.key === "Tab" || e.key === "Enter")
+              ) {
+                e.preventDefault(); // prevent default tab out of table
+                handleAddRow();
+                // small delay to let DOM update, then focus next cell
+                setTimeout(() => {
+                  const nextInput = document.querySelector(
+                    `input[id=table_${tableData.length}_${tableConfig[0].key}]`
+                  ) as HTMLInputElement;
+                  nextInput?.focus();
+                }, 50);
+              }
+            }}
+          />
+        </Form.Item>
+      );
     },
-    {
-      title: "Cột 3",
-      dataIndex: "col3",
-      key: "col3",
-      render: (value: string, record: any) => (
-        <Input
-          placeholder="Nhập dữ liệu..."
-          defaultValue={value}
-          size="small"
-          style={{ minWidth: "100px" }}
-        />
-      ),
-    },
-    {
-      title: "Cột 4",
-      dataIndex: "col4",
-      key: "col4",
-      render: (value: string, record: any) => (
-        <Input
-          placeholder="Nhập dữ liệu..."
-          defaultValue={value}
-          size="small"
-          style={{ minWidth: "100px" }}
-        />
-      ),
-    },
-    {
-      title: "Cột 8",
-      dataIndex: "col8",
-      key: "col8",
-      render: (value: string, record: any) => (
-        <Input
-          placeholder="Nhập dữ liệu..."
-          defaultValue={value}
-          size="small"
-          style={{ minWidth: "100px" }}
-        />
-      ),
-    },
-  ];
+  }));
 
   return (
     <div className="screen-container">
-      {/* Left side - Image and SOP button */}
+      {/* Left side */}
       <div className="screen-left">
         <div className="image-container">
           <div className="image-container__media">
@@ -78,32 +86,34 @@ export function EntryScreen() {
         </div>
       </div>
 
-      {/* Right side - Controls and Table */}
+      {/* Right side (form only here) */}
       <div className="screen-right">
-        {/* Input fields */}
-        <div className="input-grid">
-          <Input placeholder="Cột 1" size="large" />
-          <Input placeholder="Cột 5" size="large" />
-          <Input placeholder="Cột 7" size="large" />
-          <Input
-            placeholder="Cột 9"
-            size="large"
-            style={{ gridColumn: "span 2" }}
-          />
-          <Input placeholder="Cột 10" size="large" />
-        </div>
+        {/* Wrap only the right section inside Form */}
+        <Form form={form} layout="vertical">
+          {/* Inputs (1,5,6,7,9,10) */}
+          <div className="input-grid">
+            {inputConfig.map((input) => (
+              <Form.Item
+                key={input.key}
+                name={["inputs", input.key]}
+                rules={input.rules}
+              >
+                <Input placeholder={input.title} size="middle" />
+              </Form.Item>
+            ))}
+          </div>
 
-        {/* Table with columns 2-3-4-8 and input fields */}
-        <div className="table-container">
-          <Table
-            columns={columns}
-            dataSource={mockTableData}
-            rowKey="id"
-            pagination={false}
-            scroll={{ x: "max-content", y: "100%" }}
-            sticky
-          />
-        </div>
+          {/* Table (2,3,4,8) */}
+          <div className="table-container">
+            <Table
+              columns={columns}
+              dataSource={tableData}
+              rowKey="id"
+              pagination={false}
+              scroll={{ x: "max-content", y: "100%" }}
+            />
+          </div>
+        </Form>
       </div>
     </div>
   );

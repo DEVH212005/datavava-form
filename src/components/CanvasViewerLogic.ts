@@ -100,7 +100,6 @@ export class MediaLogic {
     const ty = this.translating.y * dpr;
 
     ctx.setTransform(s, 0, 0, s, tx, ty);
-    
     ctx.drawImage(
       this.img,
       0,
