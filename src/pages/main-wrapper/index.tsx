@@ -21,9 +21,9 @@ export function MainWrapper() {
 
     try {
       const values = await form.validateFields();
-      console.log("✅ Submitted:", values);
+      console.log("Submitted:", values);
     } catch (error) {
-      console.log("❌ Validation failed:", error);
+      console.log("Validation failed:", error);
     }
   };
 

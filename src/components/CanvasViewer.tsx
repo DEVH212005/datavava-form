@@ -1,10 +1,15 @@
-import React from "react";
-import { startTransition, useEffect, useRef, useState } from "react";
-import { MediaLogic, type CanvasSize } from "./CanvasViewerLogic";
-import { useShortcut } from "./useShortcut";
 import "./canvas-viewer.scss";
-import { Button } from "antd";
+
+import React from "react";
+import { Button, Modal } from "antd";
 import { FileTextOutlined } from "@ant-design/icons";
+import { startTransition, useEffect, useRef, useState } from "react";
+
+import { MediaLogic, type CanvasSize } from "./CanvasViewerLogic";
+
+import { useShortcut } from "./useShortcut";
+
+import SOP_IMG from "../assets/SOP.png"
 
 interface Props {
   width?: number;
@@ -13,6 +18,8 @@ interface Props {
 }
 
 export default function CanvasViewer({ src, width, height }: Props) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [canvasSize, setCanvasSize] = useState<CanvasSize>({
     width: 0,
@@ -114,9 +121,29 @@ export default function CanvasViewer({ src, width, height }: Props) {
         >
           Reset
         </Button>
-        <Button icon={<FileTextOutlined />} size="small" type="primary">
+        <Button
+          icon={<FileTextOutlined />}
+          size="small"
+          type="primary"
+          onClick={() => setIsModalVisible(true)}
+        >
           SOP
         </Button>
+
+        <Modal
+          title="SOP Hướng Dẫn"
+          open={isModalVisible}
+          onCancel={() => setIsModalVisible(false)}
+          footer={null}
+          centered
+          width={700}
+        >
+          <img
+            src={SOP_IMG}
+            alt="SOP"
+            style={{ width: "100%", borderRadius: 8 }}
+          />
+        </Modal>
       </div>
     </div>
   );
