@@ -16,10 +16,10 @@ export default function ClassificationScreen() {
   const [selectedRow, setSelectedRow] = useState<any | null>(null);
 
   const filteredData = useMemo(() => {
-    if(!searchValue) return mockData;
+    if (!searchValue) return mockData;
 
     const lower = searchValue.toLowerCase();
-    return mockData.filter((item) => item.code.toLowerCase().includes(lower));
+    return mockData.filter((item) => item.name.toLowerCase().includes(lower));
   }, [searchValue]);
 
   const columns = [
@@ -61,7 +61,10 @@ export default function ClassificationScreen() {
               record.id === selectedRow?.id ? "selected-row" : ""
             }
             onRow={(record) => ({
-              onClick: () => setSelectedRow(record),
+              onClick: () => {
+                setSelectedRow(record);
+                setSearchValue(record.name);
+              },
             })}
             scroll={{ x: "max-content", y: "100%" }}
           />

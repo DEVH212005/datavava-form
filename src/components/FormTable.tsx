@@ -141,6 +141,7 @@ export default function App() {
           defaultActiveKey="classification"
           items={tabItems}
           className="tabs-container"
+          destroyInactiveTabPane
           tabBarStyle={{
             borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
             margin: 0,

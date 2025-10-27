@@ -7,7 +7,17 @@ export interface Shortcut {
   callback: () => void;
 }
 
-const listKeysValid = ["Control", "Shift", "Alt", "Meta"];
+const listKeysValid = Object.freeze([
+  "Control",
+  "Shift",
+  "Alt",
+  "Meta",
+  "ArrowLeft",
+  "ArrowUp",
+  "ArrowRight",
+  "ArrowDown",
+  "Delete",
+]);
 const regex = /^[A-Za-z0-9]+$/;
 
 export function useShortcut(shortcuts: Shortcut[]) {
@@ -47,6 +57,7 @@ export function useShortcut(shortcuts: Shortcut[]) {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      console.log(e.key);
       if (
         pressedKeys.current.length === 0 &&
         !listKeysValid.includes(e.key) &&
@@ -82,6 +93,8 @@ export function useShortcut(shortcuts: Shortcut[]) {
       window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
+
+  return { cleanShortcut: treeRef.current.cleanShortcut };
 }
 
 export interface ShortcutNode {
@@ -94,6 +107,10 @@ export class ShortcutTree {
   root: ShortcutNode;
 
   constructor() {
+    this.root = { key: "root", children: new Map() };
+  }
+
+  cleanShortcut() {
     this.root = { key: "root", children: new Map() };
   }
 

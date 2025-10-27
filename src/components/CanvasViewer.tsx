@@ -82,26 +82,6 @@ export default function CanvasViewer({ src, width, height }: Props) {
     };
   }, [canvasSize, src]);
 
-  useShortcut([
-    {
-      title: "Ctrl+X",
-      key: ["Control", "x"],
-      callback: () => console.log("Ctrl+x"),
-    },
-    {
-      title: "Ctrl+N+V",
-      key: ["Shift", "Control", "A"],
-      callback: () => console.log("Shift+Control+A"),
-    },
-    {
-      title: "Ctrl+Shift+R",
-      key: ["Control", "Shift", "A"],
-      callback: () => console.log("Ctrl+Shift+A"),
-    },
-    { title: "Alt+A", key: ["Alt", "a"], callback: () => console.log("Alt+A") },
-    { title: "F1", key: ["F1"], callback: () => console.log("F1") },
-  ]);
-
   return (
     <div className="canvas-wrapper">
       <canvas

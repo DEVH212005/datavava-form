@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Input, Table, InputRef } from "antd";
 import Media from "./CanvasViewer";
 import UserViewer from "./UsersViewer";
+import { useShortcut } from "./useShortcut";
 
 const mockData = [
   { id: 1, code: "PL001", name: "Loại A", status: "Hoạt động" },
@@ -11,18 +12,30 @@ const mockData = [
   { id: 5, code: "PL005", name: "Loại E", status: "Hoạt động" },
 ];
 
-const mockDataUser1 = { id: 2, code: "PL002", name: "Loại B", status: "Hoạt động" };
-const mockDataUser2 = { id: 4, code: "PL004", name: "Loại D", status: "Hoạt động" };
+const mockDataUser1 = {
+  id: 2,
+  code: "PL002",
+  name: "Loại B",
+  status: "Hoạt động",
+};
+const mockDataUser2 = {
+  id: 4,
+  code: "PL004",
+  name: "Loại D",
+  status: "Hoạt động",
+};
 
 export function CheckClassificationScreen() {
-  const [activeUser, setActiveUser] = useState<"userLeft" | "userRight">("userLeft");
+  const [activeUser, setActiveUser] = useState<"userLeft" | "userRight">(
+    "userLeft"
+  );
   const [searchValue, setSearchValue] = useState("");
   const [selectedRow, setSelectedRow] = useState<any | null>(null);
 
   const filteredData = useMemo(() => {
     if (!searchValue) return mockData;
     const lower = searchValue.toLowerCase();
-    return mockData.filter((item) => item.code.toLowerCase().includes(lower));
+    return mockData.filter((item) => item.name.toLowerCase().includes(lower));
   }, [searchValue]);
 
   const handleRightClick = (e: React.MouseEvent) => {
@@ -37,7 +50,7 @@ export function CheckClassificationScreen() {
   ];
 
   return (
-    <div className="screen-container" onContextMenu={handleRightClick}>
+    <div className="screen-container">
       {/* Left section */}
       <div className="screen-left">
         <div className="image-container">
@@ -48,14 +61,12 @@ export function CheckClassificationScreen() {
       </div>
 
       {/* Right section */}
-      <div className="screen-right">
-        <UserViewer
-          userName1="Phạm Văn C"
-          userName2="Lê Thị D"
-        />
+      <div className="screen-right" onContextMenu={handleRightClick}>
+        <UserViewer userName1="Phạm Văn C" userName2="Lê Thị D" />
 
         <div className="data-input">
           <Input
+            value={searchValue}
             placeholder="Nhập dữ liệu..."
             size="large"
             onChange={(e) => setSearchValue(e.target.value)}
@@ -71,12 +82,17 @@ export function CheckClassificationScreen() {
             size="middle"
             rowClassName={(record) => {
               if (selectedRow?.id === record.id) return "selected-row";
-              if (activeUser==="userLeft" && record.id === mockDataUser1.id) return "selected-row__userleft";
-              if (activeUser==="userRight" && record.id === mockDataUser2.id) return "selected-row__userright";
+              if (activeUser === "userLeft" && record.id === mockDataUser1.id)
+                return "selected-row__userleft";
+              if (activeUser === "userRight" && record.id === mockDataUser2.id)
+                return "selected-row__userright";
               return "";
             }}
             onRow={(record) => ({
-              onClick: () => setSelectedRow(record),
+              onClick: () => {
+                setSelectedRow(record);
+                setSearchValue(record.name);
+              },
             })}
             scroll={{ x: "max-content", y: "100%" }}
           />
